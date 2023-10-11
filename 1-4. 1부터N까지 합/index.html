@@ -6,7 +6,7 @@
     <body>
         <script>
             function solution(n){
-                const result = (n * Math.floor(n/2) + Math.ceil(n/2)) ;
+                const result = n * Math.floor(n/2) + Math.ceil(n/2) ;
                 return n % 2 === 1 ? result + Math.floor(n/2) : result;
             }
 

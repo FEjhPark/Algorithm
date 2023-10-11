@@ -6,12 +6,8 @@
     <body>
         <script>
             function solution(n){
-                let result =0;
-                for(let x=1; x<=n; x++){
-                    result+=x;
-                }
-
-                return result;
+                const result = (n * Math.floor(n/2) + Math.ceil(n/2)) ;
+                return n % 2 === 1 ? result + Math.floor(n/2) : result;
             }
 
             console.log(solution(10));

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+                const widthArr= [];
+                const heightArr = new Array(arr.length).fill(0);
+                let LRdiag = 0; // 왼쪽 -> 오른쪽 대각선
+                let RLdiag = 0; // 오른쪽 -> 왼쪽 대각선
+                let RLdiagIndex =arr.length -1; // 오른쪽 -> 왼쪽 대각선 인덱스
+
+                for(let x=0; x<arr.length; x++ ,RLdiagIndex--){
+                    widthArr.push(arr[x].reduce((total,value)=>{return total += value}));
+                    for(let y=0; y<arr.length; y++){
+                        heightArr[x] += arr[y][x];
+                    }
+                    LRdiag += arr[x][x];
+                    RLdiag += arr[x][RLdiagIndex];
+                }
+                
+                return Math.max(Math.max(...widthArr), Math.max(...heightArr), LRdiag, RLdiag);
+            }
+
+            let arr=[[10, 13, 10, 12, 15], 
+                     [12, 39, 30, 23, 11],
+                     [11, 25, 50, 53, 15],
+                     [19, 27, 29, 37, 27],
+                     [19, 13, 30, 13, 19]];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>

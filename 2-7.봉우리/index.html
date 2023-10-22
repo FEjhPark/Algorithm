@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+                let count =0;
+                arr.push(new Array(arr.length).fill(0));
+                arr.unshift(new Array(arr.length -1).fill(0));
+
+                arr.forEach(item => {
+                    item.push(0)
+                    item.unshift(0);
+                });
+
+                for(let x=1; x< arr.length -1; x++){
+                    for(let y=1; y<arr.length -1; y++){
+                        if(arr[x][y] > arr[x+1][y] && arr[x][y] > arr[x-1][y] && arr[x][y] > arr[x][y+1] && arr[x][y] > arr[x][y-1]){
+                            count++;
+                        }
+                    }
+                }
+                return count;
+            }
+
+            let arr=[[5, 3, 7, 2, 3], 
+                     [3, 7, 1, 6, 1],
+                     [7, 2, 5, 3, 4],
+                     [4, 3, 6, 4, 1],
+                     [8, 7, 3, 5, 2]];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>

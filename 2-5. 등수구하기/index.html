@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){  
+                const copyArr = [...arr];
+                const newArr = new Array(arr.length).fill(undefined);
+                let maxNum = 0; // 최대값
+                let rank = 1; // 랭킹
+
+                for(let x=0; x<arr.length; x++){
+                    maxNum = Math.max(...copyArr);
+                    const maxIndex = copyArr.indexOf(maxNum);
+                    newArr[maxIndex] = rank;
+                    copyArr.splice(maxIndex,1,0);
+                    if(copyArr.indexOf(maxNum) === -1){
+                        rank = x+2;
+                    }
+                }
+
+                return newArr;
+            }
+            let arr=[87, 89, 92, 100, 76,100];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>

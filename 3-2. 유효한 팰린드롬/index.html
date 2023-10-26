@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                const alpString = s.replace(/[^a-zA-Z]/g, '').toUpperCase();
+                let firstString = alpString.slice(0,alpString.length/2);
+                let secondString = alpString.slice(alpString.length/2, alpString.length).split('').reverse().join('')
+                
+                if(alpString.length % 2 === 1){
+                    secondString = alpString.slice(alpString.length/2 + 1, alpString.length).split('').reverse().join('');
+                }
+
+                return firstString === secondString ? "YES" : "NO";
+            }
+            
+            let str="found7, time: study; Yduts; emit, 7Dnuof";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                const newArr = [...new Set(s)];
+                let resultString = '';
+
+                newArr.forEach((item,index)=>{
+                    let minus = s.lastIndexOf(item) - s.indexOf(item);
+                    resultString += item + (minus !==0 ? minus + 1 : '');
+                })
+
+                return resultString;
+            }
+            
+            let str="KKHSSSSSSSE";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>

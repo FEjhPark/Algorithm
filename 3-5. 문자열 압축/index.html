@@ -23,8 +23,8 @@
 
                 for(let x=0; x<newArr.length; x++){
                     let nextAlpIndex = s.indexOf(newArr[x+1], s_save_Index);
-                    let nowAlpIndex = s.indexOf(newArr[x], s_save_Index);
-                    let zipNumber = nextAlpIndex !== -1 ? nextAlpIndex - nowAlpIndex : s.length - nowAlpIndex || ''
+                    let currentAlpIndex = s.indexOf(newArr[x], s_save_Index);
+                    let zipNumber = nextAlpIndex !== -1 ? nextAlpIndex - currentAlpIndex : s.length - currentAlpIndex || ''
                     resultString += newArr[x] + (zipNumber !== 1 ? zipNumber : '');
 
                     s_save_Index= nextAlpIndex;

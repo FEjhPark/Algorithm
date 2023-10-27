@@ -6,18 +6,36 @@
     <body>
         <script>
             function solution(s){
-                const newArr = [...new Set(s)];
+                let s_save_Index = 0;
+                let newArr;
                 let resultString = '';
 
-                newArr.forEach((item,index)=>{
-                    let minus = s.lastIndexOf(item) - s.indexOf(item);
-                    resultString += item + (minus !==0 ? minus + 1 : '');
-                })
+                /* 문자열이 중복으로 나오지 않을시 (ex. str = "AABBCDD") */
+                // newArr = [...new Set(s)];
 
+                // newArr.forEach((item,index)=>{
+                //     let minus = s.lastIndexOf(item) - s.indexOf(item);
+                //     resultString += item + (minus !==0 ? minus + 1 : '');
+                // })
+
+                /* 문자열이 중복으로 나올시 (ex. str = "AABBAAAAACCCDD") */
+                newArr = s.split('').filter((item,index) =>{
+                    return item !== s[index+1];
+                });
+
+                for(let x=0; x<newArr.length; x++){
+                    let nextAlpIndex = s.indexOf(newArr[x+1], s_save_Index);
+                    let nowAlpIndex = s.indexOf(newArr[x], s_save_Index);
+                    let zipNumber = nextAlpIndex !== -1 ? nextAlpIndex - nowAlpIndex : s.length - nowAlpIndex || ''
+                    resultString += newArr[x] + (zipNumber !== 1 ? zipNumber : '');
+
+                    s_save_Index= nextAlpIndex;
+                }
+                
                 return resultString;
             }
             
-            let str="KKHSSSSSSSE";
+            let str="KKHSSSSSSSESSSS";
             console.log(solution(str));
         </script>
     </body>

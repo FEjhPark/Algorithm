@@ -19,9 +19,7 @@
                 // })
 
                 /* 문자열이 중복으로 나올시 (ex. str = "AABBAAAAACCCDD") */
-                newArr = s.split('').filter((item,index) =>{
-                    return item !== s[index+1];
-                });
+                newArr = s.split('').filter( ( item,index) =>{ return item !== s[index+1]; } );
 
                 for(let x=0; x<newArr.length; x++){
                     let nextAlpIndex = s.indexOf(newArr[x+1], s_save_Index);

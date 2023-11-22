@@ -6,15 +6,15 @@
     <body>
         <script>
             function solution(arr){
-                const widthArr= [];
+                const widthArr= new Array(arr.length).fill(0);
                 const heightArr = new Array(arr.length).fill(0);
                 let LRdiag = 0; // 왼쪽 -> 오른쪽 대각선
                 let RLdiag = 0; // 오른쪽 -> 왼쪽 대각선
                 let RLdiagIndex =arr.length -1; // 오른쪽 -> 왼쪽 대각선 인덱스
 
                 for(let x=0; x<arr.length; x++ ,RLdiagIndex--){
-                    widthArr.push(arr[x].reduce((total,value)=>{return total += value}));
                     for(let y=0; y<arr.length; y++){
+                        widthArr[x] +=  arr[x][y];
                         heightArr[x] += arr[y][x];
                     }
                     LRdiag += arr[x][x];

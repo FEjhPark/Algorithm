@@ -7,9 +7,14 @@
         <script>
             function solution(s){
                 const alpString = s.replace(/[^a-zA-Z]/g, '').toUpperCase();
+
+                // 길이 절반만큼 저장(0~중간)
                 let firstString = alpString.slice(0,alpString.length/2);
-                let secondString = alpString.slice(alpString.length/2, alpString.length).split('').reverse().join('')
+
+                // 나머지 절반 잘라서 거꾸로 뒤집은 후 저장(중간 ~ 끝)
+                let secondString = alpString.slice(alpString.length/2, alpString.length).split('').reverse().join('');
                 
+                // 문자열 길이가 홀수일경우 중간문자만 제외하고 저장(ex. /ab/ c /ba/ => /ab/ c /ab/)
                 if(alpString.length % 2 === 1){
                     secondString = alpString.slice(alpString.length/2 + 1, alpString.length).split('').reverse().join('');
                 }

@@ -6,14 +6,26 @@
     <body>
         <script>
             function solution(s){
+                // 인덱스 위주로 다룰예정 인덱스 담을 변수 생성
                 let s_save_Index = 0;
+
+                // 다음 문자와 다른 문자만 추출 = 필터문자열
                 let newArr = s.split('').filter( ( item,index) =>{ return item !== s[index+1]; } );
+
+                // 결과값
                 let resultString = '';
 
                 for(let x=0; x<newArr.length; x++){
+                    // 원본 문자열에서 다음 문자와 다른 인덱스 찾기 (newArr[x+1]이 없는경우 undefined나옴)
+                    // ex. SSSSSSE => SSSSSS"E" => 인덱스 6
                     let nextAlpIndex = s.indexOf(newArr[x+1], s_save_Index);
+
+                    // 원본 문자열에서 현재 문자와 같은 첫번째 인덱스 찾기
+                    // ex. SSSSSSE => "S"SSSSSE => 인덱스 0
                     let currentAlpIndex = s.indexOf(newArr[x], s_save_Index);
-                    let zipNumber = nextAlpIndex !== -1 ? nextAlpIndex - currentAlpIndex : s.length - currentAlpIndex || ''
+
+                    // nextAlpIndex 가 마지막이 아닐경우 
+                    let zipNumber = nextAlpIndex !== -1 ? nextAlpIndex - currentAlpIndex : s.length - currentAlpIndex
                     resultString += newArr[x] + (zipNumber !== 1 ? zipNumber : '');
 
                     s_save_Index= nextAlpIndex;

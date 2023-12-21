@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function solution(arr){
+            // 배열 원소 거꾸로 뒤집기
+            let answer=arr.map(item => {return Number(item.toString().split('').reverse().join(''))});
+
+            // 소수 걸러내기
+            const newArr = answer.filter((firstValue,firstIndex) => {
+
+                // 원소값 루트씌워서 소수인지 판별
+                return range(parseInt(Math.sqrt(firstValue))).every((secondValue, secondIndex)=>{
+                    return firstValue % secondValue !== 0
+                }) && firstValue !== 1
+            });
+
+            return newArr;
+        }
+
+        // 연속된 배열 만들기 2...n
+        function range(size){
+            return new Array(size - 1).fill(2).map((item,index)=>{return item + index})
+        }
+        
+        let arr=[32, 55, 62, 20, 250, 370, 200, 30, 100];
+        console.log(solution(arr));
+    </script>
+</body>
+</html>

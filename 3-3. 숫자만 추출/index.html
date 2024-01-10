@@ -6,6 +6,7 @@
     <body>
         <script>
             function solution(str){
+                // 숫자 아닌 문자 대상 기준으로 배열만든후 다시 문자열화 시켜서 숫자로변환후 리턴
                 return parseInt(str.split(/[^0-9]/g).join(''));
             }
             let str="g0en2T0s8eSoft";
